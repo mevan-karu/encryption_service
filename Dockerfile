@@ -23,9 +23,9 @@ RUN wget -qO - https://pkgs-ce.cossacklabs.com/gpg | apt-key add - && apt instal
 RUN addgroup -S -g ${USER_GROUP_ID} ${USER_GROUP} \
     && adduser -S -D -H -h ${USER_HOME} -s /sbin/nologin -G ${USER_GROUP} -u ${USER_ID} ${USER}
 
-COPY --chown=${USER}:${USER_GROUP} --from=0 /encryption_service/target/bin/encryption_service.jar ${USER_HOME}/
+COPY --chown=${USER}:${USER_GROUP} --from=0 /encryption_service/target/bin/envryption_service.jar ${USER_HOME}/
 
 USER 10001
 WORKDIR ${USER_HOME}
 
-CMD ["java", "-jar", "/encryption_service.jar"]
+CMD ["java", "-jar", "/envryption_service.jar"]
