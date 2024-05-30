@@ -18,10 +18,10 @@ ARG USER_HOME=/home/${USER}
 
 RUN apt-get update && apt-get install -y gnupg2
 
-RUN wget -qO - https://pkgs-ce.cossacklabs.com/gpg | apt-key add - && apt install -y apt-transport-https && echo "deb https://pkgs-ce.cossacklabs.com/stable/ubuntu focal main" >> /etc/apt/sources.list.d/cossacklabs.list && apt update && apt install -y libthemis libthemis-jni && find /usr/lib/ -name 'libthemis_jni.so' -exec cp "{}" /usr/lib  /usr/lib;
+RUN wget -qO - https://pkgs-ce.cossacklabs.com/gpg | apt-key add - && apt install -y apt-transport-https && echo "deb https://pkgs-ce.cossacklabs.com/stable/ubuntu focal main" >> /etc/apt/sources.list.d/cossacklabs.list && apt update && apt install -y libthemis libthemis-jni && cp /usr/lib/$(uname -m)-linux-gnu/jni/libthemis_jni.so /usr/lib
 
-RUN addgroup -S -g ${USER_GROUP_ID} ${USER_GROUP} \
-    && adduser -S -D -H -h ${USER_HOME} -s /sbin/nologin -G ${USER_GROUP} -u ${USER_ID} ${USER}
+RUN addgroup --system --gid ${USER_GROUP_ID} ${USER_GROUP} \
+    && adduser --system -D -H -h ${USER_HOME} --disabled-login -G ${USER_GROUP} -u ${USER_ID} ${USER}
 
 COPY --chown=${USER}:${USER_GROUP} --from=0 /encryption_service/target/bin/envryption_service.jar ${USER_HOME}/
 
