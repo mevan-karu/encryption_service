@@ -1,0 +1,37 @@
+[package]
+org = "mevan"
+name = "envryption_service"
+version = "0.1.0"
+distribution = "2201.5.1"
+
+[build-options]
+observabilityIncluded = true
+
+[[platform.java11.dependency]]
+groupId = "com.cossacklabs.com"
+artifactId = "java-themis"
+version = "0.15.2"
+
+# transitive dependency of com.cossacklabs.com:java-themis:0.15.2
+[[platform.java11.dependency]]
+groupId = "org.jetbrains.kotlin"
+artifactId = "kotlin-stdlib"
+version = "1.4.32"
+
+# transitive dependency of org.jetbrains.kotlin:kotlin-stdlib:1.4.32
+[[platform.java11.dependency]]
+groupId = "org.jetbrains.kotlin"
+artifactId = "kotlin-stdlib-common"
+version = "1.4.32"
+
+# transitive dependency of org.jetbrains.kotlin:kotlin-stdlib:1.4.32
+[[platform.java11.dependency]]
+groupId = "org.jetbrains"
+artifactId = "annotations"
+version = "13.0"
+
+# transitive dependency of com.cossacklabs.com:java-themis:0.15.2
+[[platform.java11.dependency]]
+groupId = "org.jetbrains"
+artifactId = "annotations-java5"
+version = "16.0.2"
