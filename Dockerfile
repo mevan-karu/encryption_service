@@ -4,6 +4,8 @@ ADD . /encryption_service
 
 WORKDIR /encryption_service
 
+USER root
+
 RUN bal build
 
 FROM eclipse-temurin:11.0.23_9-jre-focal
